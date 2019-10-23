@@ -19,7 +19,8 @@ public class Sum {
 		b = Integer.parseInt(s2);
 		System.out.println(a + "," + b);
 		
-		int c = a +b;
+		
 		System.out.println("sum : " + (a+b));
+		scanner.close();
 	}
 }  
