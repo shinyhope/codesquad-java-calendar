@@ -18,22 +18,34 @@ public class Calendar {
 		if (isLeapYear(year)) {
 			return LEAP_MAX_DAYS[month - 1];
 		} else {
-			return MAX_DAYS[month - 1];	
+			return MAX_DAYS[month - 1];
 		}
-		
+
 	}
 
-	public void printCalendar(int year, int month) {
+	public void printCalendar(int year, int month, int weekday) {
 		System.out.printf(" << %4d %3d >>\n", year, month);
 		System.out.println("SU MO TU WE TH FR SA");
 		System.out.println("--------------------");
-		
-		int maxDay = getMaxDaysOfMonth(year, month);
 
+		int maxDay = getMaxDaysOfMonth(year, month);
+		for (int j = 0; j < weekday; j++) {
+			System.out.print("   ");
+		}
+		int displayFlag = 0;
 		for (int i = 1; i <= maxDay; i++) {
 			System.out.printf("%3d", i);
-			if (i % 7 == 0) {
-				System.out.println();
+
+			if (displayFlag == 0) {
+				if (i % (7 - weekday) == 0) {
+					System.out.println();
+					displayFlag++;
+				}
+
+			} else {
+				if ((i + weekday) % 7 == 0) {
+					System.out.println();
+				}
 			}
 		}
 		System.out.println();
